@@ -1,8 +1,6 @@
-import { useState } from 'react'
-
-import './App.css'
-import { TwitterFollowCard } from './TwitterFollowCard.jsx'
-
+import './App.css';
+import { TwitterFollowCard } from './TwitterFollowCard.jsx';
+import Gallery from './components/gallery';
 const users = [
   {
     userName: 'midudev',
@@ -12,39 +10,38 @@ const users = [
   {
     userName: 'pheralb',
     name: 'Pablo H.',
-    isFollowing: false
+    isFollowing: false,
   },
   {
     userName: 'PacoHdezs',
     name: 'Paco Hdez',
-    isFollowing: true
+    isFollowing: true,
   },
   {
     userName: 'TMChein',
     name: 'Tomas',
-    isFollowing: false
+    isFollowing: false,
   },
   {
     userName: 'andresyrg16',
     name: 'Andrés',
-    isFollowing: false
-  }
-]
+    isFollowing: false,
+  },
+];
 
-export function App () {
+export function App() {
   return (
-    <section className="App">
-      {
-        users.map(({ userName, name, isFollowing }) => (
-          <TwitterFollowCard
-            key={userName}
-            userName={userName}
-            initialIsFollowing={isFollowing}
-          >
-            {name}
-          </TwitterFollowCard>
-        ))
-      }
+    <section className='App'>
+      {/* {users.map(({ userName, name, isFollowing }) => (
+        <TwitterFollowCard
+          key={userName}
+          userName={userName}
+          initialIsFollowing={isFollowing}
+        >
+          {name}
+        </TwitterFollowCard>
+      ))} */}
+      <Gallery/>
     </section>
-  )
+  );
 }

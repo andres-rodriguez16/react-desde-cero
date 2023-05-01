@@ -1,0 +1,22 @@
+main {
+  display: flex;
+  width: 650px;
+  height: 470px;
+}
+
+main img {
+  width: 0px;
+  flex-grow: 1;
+  object-fit: cover;
+  opacity: 0.8;
+  transition: ease .4s;
+}
+
+main img:hover {
+  width: 300px;
+  height: auto;
+  opacity: 1;
+  cursor: crosshair;
+  filter: contrast(100%);
+}
+
