@@ -1,24 +1,8 @@
 import { AddToCartIcon } from './Icon';
 import './Products.css';
 
-interface Products {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
-}
-interface ArrayProduct {
-  products: Products[];
-}
 
-const Products = ({ products }: ArrayProduct) => {
+const Products = ({ products }) => {
   return (
     <main className='products'>
       <ul>

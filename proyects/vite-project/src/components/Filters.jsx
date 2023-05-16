@@ -1,21 +1,21 @@
 import { useState, useId } from 'react';
 import './Filters.css';
 
-export const Filters = ({ chagesFilters }: any) => {
-  const [price, setPrice] = useState<number>(0);
+export const Filters = ({ chagesFilters }) => {
+  const [price, setPrice] = useState(0);
   const idFilterMinPrice = useId();
   const idFilterCategory = useId();
-  const onChangePrice = (e: any) => {
+  const onChangePrice = (e) => {
     setPrice(e.target.value);
 
-    chagesFilters((prevState: any) => ({
+    chagesFilters((prevState) => ({
       ...prevState,
       minPrince: e.target.value,
     }));
   };
 
-  const handlesOnchangeCategory = (e: any) => {
-    chagesFilters((prevState: any) => ({
+  const handlesOnchangeCategory = (e) => {
+    chagesFilters((prevState) => ({
       ...prevState,
       category: e.target.value,
     }));

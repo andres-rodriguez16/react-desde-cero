@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-export const Header = ({ children }: any) => {
+export const Header = ({ children }) => {
   return (
     <div>
       <p>React shop </p>
