@@ -9,35 +9,36 @@ import { FiltersContext } from './context/Filtercontext';
 
 
 
-const useFilters = () => {
-  const [fiters, setFilters] = useState({
-    category: 'all',
-    minPrince: 0,
-  });
+function useFilters () {
+  const { filters, setFilters } = useContext(FiltersContext)
 
-  const filtersProduct = (products) => {
-    return products.filter((product) => {
+  const filterProducts = (products) => {
+    return products.filter(product => {
       return (
-        product.price >= fiters.minPrince &&
-        (fiters.category === 'all' || product.category === fiters.category)
-      );
-    });
-  };
-  return { filtersProduct, fiters, setFilters };
-};
+        product.price >= filters.minPrice &&
+        (
+          filters.category === 'all' ||
+          product.category === filters.category
+        )
+      )
+    })
+  }
+
+  return { filters, filterProducts, setFilters }
+}
 
 function App() {
    
   const [ products ] = useState(initialProducts);
-  const { filtersProduct, setFilters, fiters } = useFilters();
+  const { filterProducts, setFilters, filters } = useFilters();
   return (
     <div className='container'>
       <Header>
         <Filters chagesFilters={setFilters}></Filters>
       </Header>
       <h1>shopping cart</h1>
-      <Products products={filtersProduct(products)} />
-      <Foteer filters={fiters} />
+      <Products products={filterProducts(products)} />
+      <Foteer filters={filters} />
     </div>
   );
 }
