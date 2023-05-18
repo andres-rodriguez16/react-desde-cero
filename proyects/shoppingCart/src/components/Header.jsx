@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import { Filters } from "./Filters";
 
-export const Header = ({ children }) => {
+export const Header = () => {
   return (
     <div>
       <p>React shop </p>
-      {children}
+     <Filters />
     </div>
   );
 };

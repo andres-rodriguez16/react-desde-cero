@@ -1,21 +1,22 @@
-import { useState, useId } from 'react';
+import {  useId } from 'react';
 import './Filters.css';
+import { useFilters } from '../hooks/UseFilters';
 
-export const Filters = ({ chagesFilters }) => {
-  const [price, setPrice] = useState(0);
+export const Filters = () => {
+  const { filters,setFilters } = useFilters();
   const idFilterMinPrice = useId();
   const idFilterCategory = useId();
-  const onChangePrice = (e) => {
-    setPrice(e.target.value);
 
-    chagesFilters((prevState) => ({
+  const onChangePrice = e => {
+   
+    setFilters(prevState => ({
       ...prevState,
-      minPrince: e.target.value,
+      minPrice: e.target.value,
     }));
   };
 
-  const handlesOnchangeCategory = (e) => {
-    chagesFilters((prevState) => ({
+  const handlesOnchangeCategory = e => {
+    setFilters(prevState => ({
       ...prevState,
       category: e.target.value,
     }));
@@ -31,8 +32,9 @@ export const Filters = ({ chagesFilters }) => {
           min={0}
           max={1000}
           onChange={onChangePrice}
+          value={filters.minPrice}
         />
-        <span>${price}</span>
+        <span>${filters.minPrice}</span>
       </div>
       <div>
         <label htmlFor={idFilterCategory}>categorias</label>
