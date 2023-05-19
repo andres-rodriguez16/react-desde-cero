@@ -5,6 +5,7 @@ export const CART_ACTION_TYPES = {
   ADD_TO_CART: 'ADD_TO_CART',
   REMOVE_FROM_CART: 'REMOVE_FROM_CART',
   CLEAR_CART: 'CLEAR_CART',
+  REMOVE_ONE_PRODUCT: 'REMOVE_ONE_PRODUCT',
 };
 
 export const updateLocalStorage = state => {
@@ -42,8 +43,28 @@ export const cartReducer = (state = cartInitialState, action) => {
     return newCart;
   }
   if (action.type === CART_ACTION_TYPES.CLEAR_CART) {
-    updateLocalStorage(cartInitialState);
-    return cartInitialState;
+    updateLocalStorage([]);
+    return [];
+  }
+  if (action.type === CART_ACTION_TYPES.REMOVE_ONE_PRODUCT) {
+    const { id, quantity } = action.payload;
+    console.log(state, "state");
+    console.log(quantity);
+    if (quantity <= 1) {
+      console.log("entro");
+      const newCart = state.filter(item => item.id !== id);
+      updateLocalStorage(newCart);
+      return newCart;
+    }
+    const newCart = state.map(item => {
+      if (item.id === id) {
+         item.quantity--;
+         console.log(item.quantity);
+      }
+      return item;
+    });
+    updateLocalStorage(newCart);
+    return newCart;
   }
   return state;
 };
