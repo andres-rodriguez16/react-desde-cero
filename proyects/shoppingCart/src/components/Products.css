@@ -17,6 +17,12 @@
   gap: 1rem;
 }
 
+.button__addTocart {
+  background-color: greenyellow;
+}
+.button__revomeFromCart {
+  background-color: red;
+}
 .products li {
   display: flex;
   flex-direction: column;
