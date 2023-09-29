@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { useFilters } from '../hooks/UseFilters';
 import { Usecart } from '../hooks/Usecart';
 import { products } from '../mocks/products.json';
@@ -10,22 +10,22 @@ const Products = () => {
   const filteredProducts = filterProducts(products);
   const { addToCart, cart, removeFromCart } = Usecart();
 
-  const [productFech, setProductFech] = useState();
+  // const [productFech, setProductFech] = useState();
 
-  useEffect(() => {
-    fetch('http://localhost:3001/products')
-      .then(r => r.json())
-      .then(data => setProductFech(data.products))
-      .catch(error => console.log(error));
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://localhost:3001/products')
+  //     .then(r => r.json())
+  //     .then(data => setProductFech(data.products))
+  //     .catch(error => console.log(error));
+  // }, []);
 
-  console.log(productFech);
   const checkProductInCart = product => {
     return cart.some(item => item.id === product.id);
   };
 
   return (
     <main className='products'>
+    
       <ul>
         {filteredProducts.map(product => {
           const isProductInCart = checkProductInCart(product);

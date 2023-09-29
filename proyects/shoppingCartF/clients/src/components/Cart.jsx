@@ -26,7 +26,6 @@ const Cart = () => {
             />
           ))}
         </ul>
-        {console.log(cart)}
         {cart.length > 0 ? (
           <button onClick={() => clearCart()}>
             <ClearCartIcon></ClearCartIcon>
