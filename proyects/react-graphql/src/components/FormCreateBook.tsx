@@ -1,51 +1,31 @@
 import React, { useState } from 'react';
-import { useMutation, gql } from '@apollo/client'
-import { ALL__BOOK } from '../App'
+import { useCreateBook } from '../hooks/useCreateBook.js'
 
-const CREATE_BOOK = gql`
-mutation AddBook($title: String!, $author: String!, $year: Int!, $edition: String!) {
-  addBook(
-    title: $title, 
-    author: $author, 
-    year: $year, 
-    edition: $edition
-    ) {
-      author,
-      id,
-      title,
-      year  
-  }
-}
-`
+
 
 const BookForm: React.FC = () => {
+  const { createBook } = useCreateBook()
   const [author, setAuthor] = useState('');
   const [title, setTitle] = useState('');
   const [year, setYear] = useState("");
 
-  const [createBook ] = useMutation(CREATE_BOOK,
-    { 
-      refetchQueries : [ { query : ALL__BOOK }]
-    }
-  )
-  
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();  
+    event.preventDefault();
     createBook({
-      variables : {
-        author : author,
-        title : title,
-        year : parseInt(year),
-        edition : "one"
+      variables: {
+        author: author,
+        title: title,
+        year: parseInt(year),
+        edition: "one"
       },
     });
-    
+
     setAuthor("")
     setTitle("")
     setYear("")
     alert("create book success")
   };
-  
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -85,7 +65,7 @@ const BookForm: React.FC = () => {
       </div>
       <button type="submit">Enviar</button>
     </form>
-    
+
   );
 };
 
