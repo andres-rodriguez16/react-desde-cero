@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div className='container'>
-      <Formularios></Formularios>
+      {/* <Formularios></Formularios> */}
       <Cart/>
       <Header />
       <h1>shopping cart</h1>

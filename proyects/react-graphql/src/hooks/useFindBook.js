@@ -8,7 +8,6 @@ export const useFindBook = () => {
 
   useEffect(() => {
     setBook(result.data?.findBook);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result])
  return { book, getBook, setBook };
 }
